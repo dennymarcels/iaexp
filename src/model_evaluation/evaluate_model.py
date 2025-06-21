@@ -1,6 +1,5 @@
 import logging
 import json
-import os
 
 import joblib
 import numpy as np
