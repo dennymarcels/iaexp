@@ -1,6 +1,7 @@
 import logging
 import os
 
+import numpy as np
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 
@@ -16,7 +17,17 @@ def fetch_data() -> pd.DataFrame:
     logger.info("Fetching data...")
     dataset = load_breast_cancer()
     data = pd.DataFrame(data=dataset.data, columns=dataset.feature_names)
+    
+    # Randomly set 5 values to NaN
+    rng = np.random.default_rng(seed=42)
+    n_rows, n_cols = data.shape
+    rows = rng.choice(n_rows, size=5, replace=True)
+    cols = rng.choice(n_cols, size=5, replace=True)
+    for row, col in zip(rows, cols):
+        data.iat[row, col] = np.nan
+    
     data["target"] = dataset.target
+    
     return data
 
 

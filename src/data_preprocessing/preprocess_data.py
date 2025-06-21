@@ -8,7 +8,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 
 
-logger = logging.getLogger("src.data_processing.preprocess_data")
+logger = logging.getLogger("src.data_processing.prepreprocess_data")
 
 
 def load_data() -> pd.DataFrame:
